@@ -1,0 +1,15 @@
+<h2>Books List (from Google Books API)</h2>
+<div *ngIf="books.length === 0">Loading books...</div>
+<ul>
+  <li *ngFor="let book of books">
+    <h3>{{ book.volumeInfo.title }}</h3>
+    <p><strong>Author:</strong> {{ book.volumeInfo.authors?.join(", ") }}</p>
+    <img
+      *ngIf="book.volumeInfo.imageLinks?.thumbnail"
+      [src]="book.volumeInfo.imageLinks.thumbnail"
+      alt="Book cover"
+      width="100"
+    />
+    <p>{{ book.volumeInfo.description | slice : 0 : 200 }}...</p>
+  </li>
+</ul>
